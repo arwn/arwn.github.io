@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  
+  <meta charset="utf-8">
+  <title>Dota Bot Write Up - arwn</title>
+  <meta name="description" content="Dota Bot Write Up">
+  <meta name="author" content="Aren Windham">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="http://example.org/css/fonts.css">
+  
+  
+  <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.1/build/pure-min.css" integrity="sha384-CCTZv2q9I9m3UOxRLaJneXrrqKwUNOzZ6NGEUMwHtShDJ+nCoiXJCAgi05KfkLGY" crossorigin="anonymous">
+  
+  
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.1/build/grids-responsive-min.css">
+  
+  <link rel="stylesheet" href="http://example.org/css/custom.css">
+
+  
+  
+  <link rel="stylesheet" href="http://example.org/highlight/styles/default.css">
+  
+  <script src="http://example.org/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <meta name="generator" content="Hugo 0.59.1" />
+  
+</head>
+<body>
+
+<div class="header pure-g">
+    <div class="pure-u-1-24 pure-u-md-5-24"></div>
+    <div class="pure-u-11-12 pure-u-md-5-8">
+        <div class="desktop pure-menu pure-menu-horizontal nav-menu">
+            
+            <a href="http://example.org/" class="site-title pure-menu-heading">arwn</a>
+            <ul class="pure-menu-list">
+				
+                
+				
+                <li class="pure-menu-item">
+                    <a href="http://example.org/about/" class="pure-menu-link">About</a>
+                </li>
+            </ul>
+        </div>
+        <div class="mobile pure-menu nav-menu">
+            <a href="/" class="pure-menu-heading" id="toggle-home">arwn</a>
+            <a href="#" id="toggle-btn">&#9776;</a>
+            <ul class="pure-menu-list" id="toggle-content" style="display:none;">
+                
+				
+                
+				
+                <li class="pure-menu-item">
+                    <a href="http://example.org/about" class="pure-menu-link">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="pure-u-1-24 pure-u-md-1-6"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-md-5-24"></div>
+	<div class="pure-u-11-12 pure-u-md-5-8">
+        <div class="post">
+
+            <div class="post-title">
+                <p class="footnote">
+                    <time class="">2020-05-13</time>
+		            
+                    
+                    
+
+                    
+
+                    
+                </p>
+                <h1>Dota Bot Write Up</h1>
+            </div>
+
+            <div class="post-content">
+                
+
+<h1 id="introduction">Introduction</h1>
+
+<p>The problem is this: We have a Dota2 bot that is becoming increasingly hard to
+program. Our bot is built with a heuristics based <a href="https://en.wikipedia.org/wiki/Finite-state_machine">state machine</a>. Each state has a hard
+coded weight that will give precedence to an action that can be taken that
+moment. Dota is an incredibly complex game and it is nearly impossible to tell
+if a change to a weight is beneficial or if the bot just got lucky one game. We
+need a way to run hundreds of games and get hard data on if the change was
+beneficial.</p>
+
+<h1 id="distributed-dota-as-a-service">Distributed Dota as a service</h1>
+
+<p>We need to run a Dota executable multiple times with different bot files to
+determine which set of weights were the most effective in practice. Docker is
+the obvious choice. Docker lets us automatically load the game, the bot files,
+and return the output. Setting up a docker container that grabs the Dota and
+bot files from the local disk is simple. After some googling and testing we
+have a way to run a game of Dota and pipe the output to a file.</p>
+
+<pre><code class="language-Docker">FROM fedora:latest
+COPY . /scripts
+VOLUME /dota
+CMD sh /scripts/run_game.sh
+</code></pre>
+
+<h2 id="parsing-game-logs">Parsing Game Logs</h2>
+
+<p>Of course Dota couldn&rsquo;t provide nice json files as logs so let&rsquo;s get to
+parsing. Dota game logs vary in length but are consistent with spacing and
+formatting. For example, if a tower dies the log will always read: ~Building:
+npc_Dota_3_tower destroyed~. Man if only there were a way to use regular
+expressions to match lines and grab fields from those lines.</p>
+
+<h2 id="awk">AWK</h2>
+
+<p>Awk is a specific purpose programming language (like wolfram alpha or bison)
+as opposed to a general purpose programming language (like Lisp or Prolog).
+This means that awk does one thing, and one thing well; text stream processing.
+Using GNU Awk we can easily write statement that will write the time a tower
+dies.  Using this as the basis, it is a non issue to implement every other
+action that can happen throughout the game.</p>
+
+<pre><code class="language-Awk">if($0 ~ /Building: npc_Dota_.*_(tower|rax)/){
+printf &quot;tower %s died at %d&quot;, $2, systime()
+}
+</code></pre>
+
+<h2 id="distributed-dota">Distributed Dota</h2>
+
+<p>We can run multiple games and pipe the nicely formatted output to files. Now we
+would like to run hundreds of games and use the data from them to create pretty
+graphs representing how well our bot does. Each docker container runs one game
+of Dota, uses two cores, and about 1.3 gigs of ram. Since our computers have 8
+threads and 8 gigs of ram we can optimally run 4 games at a time. What we would
+like to do is tell the server to run 100 games and have each computer run up to
+4 games in parallel until that 100 game quota is met.</p>
+
+<h2 id="coroutines-are-cool">Coroutines Are Cool</h2>
+
+<p>We will build our own custom solution in a programming language made for
+distributed computing. Our general layout will work like this.</p>
+
+<h3 id="server">Server</h3>
+
+<p>The server is informed that 100 games are to be played. The server
+then starts each worker and opens a http server to listen for
+requests from each worker. It listens for a START request and
+replies yes or no depending on if there are still games to be run
+or not. If it receives a json file instead of a start request it
+will log it and increment the number of games ran.  The server is
+just smart enough to worry about how many games it is running and
+how many games it needs to run, nothing else. Load balancing is
+handled by the worker.</p>
+
+<pre><code class="language-Go">// start http server
+finished.Add(1)
+go httpListener()
+
+// spin up workers
+for i, worker := range(workers) {
+fmt.Printf(&quot;Starting worker %s\n&quot;, worker)
+err := startWorker(worker)
+if err != nil {
+log.Print(err)
+}
+}
+
+// wait for every worker to complete their games
+finished.Wait()
+</code></pre>
+
+<p><code>finished</code> is a wait group meaning that finished.Wait() will block until every
+worker has sent back it&rsquo;s json data. We have a wait group so that our server
+will not end before the workers have all sent back their game data.</p>
+
+<h3 id="worker">Worker</h3>
+
+<p>The worker is in charge of load balancing it&rsquo;s computer and running games.
+When the server is woke it sends ~MAX_GAMES~ requests to the server, asking to
+start games. In Go this is easy:</p>
+
+<pre><code class="language-Go">limit := limiter.NewConcurrencyLimiter(MAX_GAMES)
+done := false
+for !done {
+	done = limit.Execute(RunGame)
+	time.Sleep(time.Second * 3) // because other computers are slow
+}
+limit.Wait()
+</code></pre>
+
+<p><code>RunGame</code> sends a http request to the server and runs a game based on the
+response. Since running a docker container/Dota game, blocks until it has
+finished running we need to spawn a new process every time we start a game.
+Again, in Go this is easy.</p>
+
+<p>Now that we have our server and workers communicating nicely we can run lots of
+games and generate huge amounts of data.</p>
+
+<h1 id="machine-learning">Machine Learning</h1>
+
+<p>As fun as tweaking random bot variables is, it&rsquo;s not very efficient.. for
+humans. Luckily computers can do boring tasks very fast. Since we have a lack
+of time and processing power we will use an algorithm that takes less of both.</p>
+
+<h2 id="genetic-algorithms">Genetic Algorithms</h2>
+
+<p>Genetic algorithms are a type of machine learning based on random mutations and
+survival of the fittest. Instead of running the server once and getting a
+result back, we want that result to be fed back into next round&rsquo;s bots. The new
+server will work as follows:</p>
+
+<p><img src="/img/genetic-uml.png" alt="/static/img/genetic-uml.png" /></p>
+
+<p>For my sake, I&rsquo;m not explaining the nitty gritty of how genes are selected but
+if you want to learn more about genetic algorithms Wikipedia has a good article
+<a href="https://en.wikipedia.org/wiki/Genetic_algorithm">here</a>. Genetic algorithms are
+just a small taste of machine learning and are still incredibly complicated.</p>
+
+<p>Implementing a genetic algorithm is only as hard as running the server over and
+over and processing data. In order to process each games data we need to write
+a function that will go over the logs and generate a fitness score for each
+hero. A fitness score is a cumulative score of how well the bot did with the
+new mutated genes. An example fitness function would look something like this:</p>
+
+<pre><code class="language-go">func CalculateFitness(hero *heroEvaluation) float64 {
+	fitness := 0.0
+
+	fitness += hero.winrate * WIN_MOD
+	fitness += hero.killsPerMinute * KPM_MOD
+	fitness += hero.assistsPerMinute * APM_MOD
+	fitness += hero.goldPerMinute * GPM_MOD
+	fitness += hero.deathsPerMinute * DPM_MOD
+	fitness += hero.experiencePerMinute * XPM_MOD
+
+	return fitness
+}
+</code></pre>
+
+<p>Each score would then be added together and given a percentage to be
+incorporated into the gene pool.</p>
+
+<pre><code class="language-go">chance := (heroFitness = totalFitness)
+</code></pre>
+
+<p>And voila, you taught a computer to reproduce. Go have some cake, you
+deserve it bud.</p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>Writing a Dota bot is not fun. Designing and implementing a distributed,
+machine learning powered Dota swarm is. The complexity and variance in each
+little problem means that we were able to help each other solve things we may
+not have learned in a one dimensional project. From docker, to machine
+learning, to shell scripting and network administration. I learned a lot about
+programming and, more importantly, project design and problem solving.</p>
+
+            </div>
+        </div>
+	</div>
+    <div class="pure-u-1-24 pure-u-md-1-6"></div>
+</div>
+
+<div class="footer pure-g">
+    <div class="pure-u-1-24 pure-u-md-5-24"></div>
+    <div class="pure-u-11-12 pure-u-md-5-8">
+        <div class="footer-content">
+		  <div class="pure-menu pure-menu-horizontal">
+              <ul>
+			      
+                  <li class="pure-menu-heading" id="foot-name">Aren Windham:</li>
+                  
+				  
+                  
+          
+                  
+                  <li class="pure-menu-item">
+                      <a href="https://github.com/arwn" class="pure-menu-link">GitHub</a>
+                  </li>
+                  
+          
+                  
+                  <li class="pure-menu-item">
+                      <a href="https://www.linkedin.com/in/aren" class="pure-menu-link">LinkedIn</a>
+                  </li>
+                  
+          
+                  
+          
+                  
+                  <li class="pure-menu-item">
+                      <a href="https://twitter.com/ArenWindham" class="pure-menu-link">Twitter</a>
+                  </li>
+                  
+          
+              </ul>
+              <a href="#" class="pure-menu-heading pull-right" id="gototop-btn">↑↑</a>
+          </div>
+		  
+		</div>
+	  </div>
+      <div class="pure-u-1-24 pure-u-md-1-6"></div>
+</div>
+
+
+<script src="http://example.org/js/jquery.min.js" type="text/javascript"></script>
+<script src="http://example.org/js/jquery.timeago.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(function(){
+    $("time.timeago").timeago();
+  })
+  $("#toggle-btn").click(function(){
+    $("#toggle-content").toggle();
+    if($(this).html() === "☰") {
+        $(this).html("X")
+    } else {
+        $(this).html("☰")
+    }
+  });
+  $(window).resize(function(){
+    if(window.innerWidth > 768) {
+      $(".desktop").removeAttr("style");
+    }
+  });
+</script>
+
+</body>
+</html>
+
