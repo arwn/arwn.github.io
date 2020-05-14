@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>arwn</title>
-    <link>http://www.arwn.github.io/</link>
+    <link>https://www.arwn.github.io/</link>
     <description>Recent content on arwn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 13 May 2020 18:38:30 -0700</lastBuildDate>
     
-	<atom:link href="http://www.arwn.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.arwn.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Dota Bot Write Up</title>
-      <link>http://www.arwn.github.io/post/dota-bot-write-up/</link>
+      <link>https://www.arwn.github.io/post/dota-bot-write-up/</link>
       <pubDate>Wed, 13 May 2020 18:38:30 -0700</pubDate>
       
-      <guid>http://www.arwn.github.io/post/dota-bot-write-up/</guid>
+      <guid>https://www.arwn.github.io/post/dota-bot-write-up/</guid>
       <description>Introduction The problem is this: We have a Dota2 bot that is becoming increasingly hard to program. Our bot is built with a heuristics based state machine. Each state has a hard coded weight that will give precedence to an action that can be taken that moment. Dota is an incredibly complex game and it is nearly impossible to tell if a change to a weight is beneficial or if the bot just got lucky one game.</description>
     </item>
     
     <item>
       <title>About</title>
-      <link>http://www.arwn.github.io/about/</link>
+      <link>https://www.arwn.github.io/about/</link>
       <pubDate>Wed, 13 May 2020 18:36:22 -0700</pubDate>
       
-      <guid>http://www.arwn.github.io/about/</guid>
+      <guid>https://www.arwn.github.io/about/</guid>
       <description>stack  hugo: gohugo.io  theme: gizak/nofancy   That&amp;rsquo;s all.</description>
     </item>
     
