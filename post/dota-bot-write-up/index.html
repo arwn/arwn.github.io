@@ -132,7 +132,7 @@ dies.  Using this as the basis, it is a non issue to implement every other
 action that can happen throughout the game.</p>
 
 <pre><code class="language-Awk">if($0 ~ /Building: npc_Dota_.*_(tower|rax)/){
-printf &quot;tower %s died at %d&quot;, $2, systime()
+    printf &quot;tower %s died at %d&quot;, $2, systime()
 }
 </code></pre>
 
@@ -169,11 +169,11 @@ go httpListener()
 
 // spin up workers
 for i, worker := range(workers) {
-fmt.Printf(&quot;Starting worker %s\n&quot;, worker)
-err := startWorker(worker)
-if err != nil {
-log.Print(err)
-}
+    fmt.Printf(&quot;Starting worker %s\n&quot;, worker)
+    err := startWorker(worker)
+    if err != nil {
+        log.Print(err)
+    }
 }
 
 // wait for every worker to complete their games
