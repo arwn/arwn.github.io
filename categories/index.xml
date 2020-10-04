@@ -1,1 +1,47 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>arwn</title><link>https://arwn.github.io/categories/</link><description>Latest blog posts from arwn</description><language>en-us</language><atom:link href="https://arwn.github.io/categories/index.xml" rel="self" type="application/rss+xml"/><item><title>Dota Bot Write Up</title><link>https://arwn.github.io/blog/2020/05/dota-bot-write-up/</link><pubDate>Wed, 13 May 2020 18:38:30 -0700</pubDate><guid>https://arwn.github.io/blog/2020/05/dota-bot-write-up/</guid><description>Introduction The problem is this: We have a Dota2 bot that is becoming increasingly hard to program. Our bot is built with a heuristics based state machine. Each state has a hard coded weight that will give precedence to an action that can be taken that moment. Dota is an incredibly complex game and it is nearly impossible to tell if a change to a weight is beneficial or if the bot just got lucky one game.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>arwn</title>
+        <link>https://arwn.github.io/categories/</link>
+        <description>Latest blog posts from arwn</description>
+
+        
+        <language>en-us</language>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+        <atom:link href="https://arwn.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+        
+
+        
+            
+        <item>
+          <title>Setting Up Drawterm</title>
+          <link>https://arwn.github.io/blog/2020/08/setting-up-drawterm/</link>
+          <pubDate>Sat, 15 Aug 2020 09:23:41 -0700</pubDate>
+          
+          <guid>https://arwn.github.io/blog/2020/08/setting-up-drawterm/</guid>
+          <description>This document outlines how to set up Plan 9 (9front to be exact) to be used with drawterm. Readers are not expected to have any Plan 9 experience. Basic Unix knowledge is helpful but not a requirement. At the end of this tutorial you will have the following:
+a virtual machine (VM) runnning 9front the ability to remotely connect to the VM using drawterm  This tutorial has been tested on Windows 10 and VirtualBox.</description>
+        </item>
+            
+        <item>
+          <title>Dota Bot Write Up</title>
+          <link>https://arwn.github.io/blog/2020/05/dota-bot-write-up/</link>
+          <pubDate>Wed, 13 May 2020 18:38:30 -0700</pubDate>
+          
+          <guid>https://arwn.github.io/blog/2020/05/dota-bot-write-up/</guid>
+          <description>Introduction The problem is this: We have a Dota2 bot that is becoming increasingly hard to program. Our bot is built with a heuristics based state machine. Each state has a hard coded weight that will give precedence to an action that can be taken that moment. Dota is an incredibly complex game and it is nearly impossible to tell if a change to a weight is beneficial or if the bot just got lucky one game.</description>
+        </item>
+            
+        
+    </channel>
+</rss>
