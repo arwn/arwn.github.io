@@ -1,0 +1,12 @@
+body {
+  background-color: #fafafa;
+  color: #333333;
+  font-family: sans-serif;
+  width: 38em;
+  padding-left: 2em;
+  max-width: 85%;
+}
+
+img {
+  max-width: 90%;
+}
