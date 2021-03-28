@@ -11,7 +11,7 @@ img {
   max-width: 90%;
 }
 
-ul {
+ul.twocol {
   columns: 2;
   -webkit-columns: 2;
   -moz-columns: 2;
