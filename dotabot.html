@@ -1,0 +1,372 @@
+
+<!DOCTYPE html>
+<html>
+<head><script src="//archive.org/includes/analytics.js?v=cf34f82" type="text/javascript"></script>
+<script type="text/javascript">window.addEventListener('DOMContentLoaded',function(){var v=archive_analytics.values;v.service='wb';v.server_name='wwwb-app210.us.archive.org';v.server_ms=345;archive_analytics.send_pageview({});});</script>
+<script type="text/javascript" src="/_static/js/bundle-playback.js?v=rQCmsv02" charset="utf-8"></script>
+<script type="text/javascript" src="/_static/js/wombat.js?v=UHAOicsW" charset="utf-8"></script>
+<script type="text/javascript">
+  __wm.init("https://web.archive.org/web");
+  __wm.wombat("https://arwn.github.io/blog/2020/05/dota-bot-write-up/","20201226105258","https://web.archive.org/","web","/_static/",
+	      "1608979978");
+</script>
+<link rel="stylesheet" type="text/css" href="/_static/css/banner-styles.css?v=fantwOh2" />
+<link rel="stylesheet" type="text/css" href="/_static/css/iconochive.css?v=qtvMKcIJ" />
+<!-- End Wayback Rewrite JS Include -->
+
+    <title>arwn - Dota Bot Write Up </title>
+    <link rel="stylesheet" type="text/css" href="https://web.archive.org/web/20201226105258cs_/https://arwn.github.io/css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="https://web.archive.org/web/20201226105258cs_/https://arwn.github.io/css/fontawesome.css">
+    <link rel="stylesheet" type="text/css" href="https://web.archive.org/web/20201226105258cs_/https://arwn.github.io/css/styles.css">
+    
+    <link rel="icon" href="https://web.archive.org/web/20201226105258im_/https://arwn.github.io/img/icon.png">
+    <meta charset="UTF-8">
+    <meta name="author" content="Aren R. Windham">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+<body><!-- BEGIN WAYBACK TOOLBAR INSERT -->
+<style type="text/css">
+body {
+  margin-top:0 !important;
+  padding-top:0 !important;
+  /*min-width:800px !important;*/
+}
+</style>
+<script>__wm.rw(0);</script>
+<div id="wm-ipp-base" lang="en" style="display:none;direction:ltr;">
+<div id="wm-ipp" style="position:fixed;left:0;top:0;right:0;">
+<div id="donato" style="position:relative;width:100%;">
+  <div id="donato-base">
+    <iframe id="donato-if" src="https://archive.org/includes/donate.php?as_page=1&amp;platform=wb&amp;referer=https%3A//web.archive.org/web/20201226105258/https%3A//arwn.github.io/blog/2020/05/dota-bot-write-up/"
+	    scrolling="no" frameborder="0" style="width:100%; height:100%">
+    </iframe>
+  </div>
+</div><div id="wm-ipp-inside">
+  <div id="wm-toolbar" style="position:relative;display:flex;flex-flow:row nowrap;justify-content:space-between;">
+    <div id="wm-logo" style="/*width:110px;*/padding-top:12px;">
+    </div>
+    <div class="c" style="display:flex;flex-flow:column nowrap;justify-content:space-between;flex:1;">
+      <form class="u" style="display:flex;flex-direction:row;flex-wrap:nowrap;" target="_top" method="get" action="/web/submit" name="wmtb" id="wmtb"><input type="text" name="url" id="wmtbURL" value="https://arwn.github.io/blog/2020/05/dota-bot-write-up/" onfocus="this.focus();this.select();" style="flex:1;"/><input type="hidden" name="type" value="replay" /><input type="hidden" name="date" value="20201226105258" /><input type="submit" value="Go" />
+      </form>
+      <div style="display:flex;flex-flow:row nowrap;align-items:flex-end;">
+		<div class="s" id="wm-nav-captures">
+	  	  <a class="t" href="/web/20201226105258*/https://arwn.github.io/blog/2020/05/dota-bot-write-up/" title="See a list of every capture for this URL">1 capture</a>
+	  <div class="r" title="Timespan for captures of this URL">26 Dec 2020</div>
+	  </div>
+	<div class="k" style="flex:1;">
+	  <a href="" id="wm-graph-anchor">
+	    <div id="wm-ipp-sparkline" title="Explore captures for this URL" style="position: relative">
+	      <canvas id="wm-sparkline-canvas" width="675" height="27" border="0"></canvas>
+	    </div>
+	  </a>
+	</div>
+      </div>
+    </div>
+    <div class="n">
+      <table>
+	<tbody>
+	  <!-- NEXT/PREV MONTH NAV AND MONTH INDICATOR -->
+	  <tr class="m">
+	    <td class="b" nowrap="nowrap">Nov</td>
+	    <td class="c" id="displayMonthEl" title="You are here: 10:52:58 Dec 26, 2020">DEC</td>
+	    <td class="f" nowrap="nowrap">Jan</td>
+	  </tr>
+	  <!-- NEXT/PREV CAPTURE NAV AND DAY OF MONTH INDICATOR -->
+	  <tr class="d">
+	    <td class="b" nowrap="nowrap"><img src="/_static/images/toolbar/wm_tb_prv_off.png" alt="Previous capture" width="14" height="16" border="0" /></td>
+	    <td class="c" id="displayDayEl" style="width:34px;font-size:22px;white-space:nowrap;" title="You are here: 10:52:58 Dec 26, 2020">26</td>
+	    <td class="f" nowrap="nowrap"><img src="/_static/images/toolbar/wm_tb_nxt_off.png" alt="Next capture" width="14" height="16" border="0" /></td>
+	  </tr>
+	  <!-- NEXT/PREV YEAR NAV AND YEAR INDICATOR -->
+	  <tr class="y">
+	    <td class="b" nowrap="nowrap">2019</td>
+	    <td class="c" id="displayYearEl" title="You are here: 10:52:58 Dec 26, 2020">2020</td>
+	    <td class="f" nowrap="nowrap">2021</td>
+	  </tr>
+	</tbody>
+      </table>
+    </div>
+    <div class="r" style="display:flex;flex-flow:column nowrap;align-items:flex-end;justify-content:space-between;">
+      <div id="wm-btns" style="text-align:right;height:23px;">
+        	<span class="xxs">
+          <div id="wm-save-snapshot-success">success</div>
+          <div id="wm-save-snapshot-fail">fail</div>
+          <a id="wm-save-snapshot-open" href="#"
+	     title="Share via My Web Archive" >
+            <span class="iconochive-web"></span>
+          </a>
+          <a href="https://archive.org/account/login.php" title="Sign In" id="wm-sign-in">
+            <span class="iconochive-person"></span>
+          </a>
+          <span id="wm-save-snapshot-in-progress" class="iconochive-web"></span>
+	</span>
+	<a id="wm-tb-close" href="#close" style="top:-2px;" title="Close the toolbar"><span class="iconochive-remove-circle" style="color:#888888;font-size:240%;"></span></a>
+      </div>
+      <div id="wm-share" class="xxs">
+        <a href="/web/20201226105258/http://web.archive.org/screenshot/https://arwn.github.io/blog/2020/05/dota-bot-write-up/"
+           id="wm-screenshot"
+           title="screenshot">
+          <span class="wm-icon-screen-shot"></span>
+        </a>
+        <a href="#" id="wm-video" title="video">
+          <span class="iconochive-movies"></span>
+        </a>
+	<a id="wm-share-facebook" href="#" data-url="https://web.archive.org/web/20201226105258/https://arwn.github.io/blog/2020/05/dota-bot-write-up/" title="Share on Facebook" style="margin-right:5px;" target="_blank"><span class="iconochive-facebook" style="color:#3b5998;font-size:160%;"></span></a>
+	<a id="wm-share-twitter" href="#" data-url="https://web.archive.org/web/20201226105258/https://arwn.github.io/blog/2020/05/dota-bot-write-up/" title="Share on Twitter" style="margin-right:5px;" target="_blank"><span class="iconochive-twitter" style="color:#1dcaff;font-size:160%;"></span></a>
+      </div>
+      <div style="padding-right:2px;text-align:right;white-space:nowrap;">
+	<a id="wm-expand" class="wm-btn wm-closed" href="#expand" onclick="__wm.ex(event);return false;"><span id="wm-expand-icon" class="iconochive-down-solid"></span> <span class="xxs" style="font-size:80%;">About this capture</span></a>
+      </div>
+    </div>
+  </div>
+    <div id="wm-capinfo" style="border-top:1px solid #777;display:none; overflow: hidden">
+                    <div id="wm-capinfo-collected-by">
+    <div style="background-color:#666;color:#fff;font-weight:bold;text-align:center">COLLECTED BY</div>
+    <div style="padding:3px;position:relative" id="wm-collected-by-content">
+            <div style="display:inline-block;vertical-align:top;width:50%;">
+			<span class="c-logo" style="background-image:url(https://archive.org/services/img/archiveteam);"></span>
+		Organization: <a style="color:#33f;" href="https://archive.org/details/archiveteam" target="_new"><span class="wm-title">Archive Team</span></a>
+		<div style="max-height:75px;overflow:hidden;position:relative;">
+	  <div style="position:absolute;top:0;left:0;width:100%;height:75px;background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 90%,rgba(255,255,255,255) 100%);"></div>
+	  <img align=right src="http://archiveteam.org/images/e/e6/Archiveteam.jpg" width=200> Formed in 2009, the Archive Team (not to be confused with the archive.org Archive-It Team) is a rogue archivist collective dedicated to saving copies of rapidly dying or deleted websites for the sake of history and digital heritage. The group is 100% composed of volunteers and interested parties, and has expanded into a large amount of related projects for saving online and digital history.
+<p>
+History is littered with hundreds of conflicts over the future of a community, group, location or business that were "resolved" when one of the parties stepped ahead and destroyed what was there. With the original point of contention destroyed, the debates would fall to the wayside. Archive Team believes that by duplicated condemned data, the conversation and debate can continue, as well as the richness and insight gained by keeping the materials. Our projects have ranged in size from a single volunteer downloading the data to a small-but-critical site, to over 100 volunteers stepping forward to acquire terabytes of user-created data to save for future generations.
+<p>
+The main site for Archive Team is at <a href="http://www.archiveteam.org">archiveteam.org</a> and contains up to the date information on various projects, manifestos, plans and walkthroughs.
+<p>
+This collection contains the output of many Archive Team projects, both ongoing and completed. Thanks to the generous providing of disk space by the Internet Archive, multi-terabyte datasets can be made available, as well as in use by the <a href="http://archive.org/web/web.php">Wayback Machine</a>, providing a path back to lost websites and work. 
+<p>
+Our collection has grown to the point of having sub-collections for the type of data we acquire. If you are seeking to browse the contents of these collections, the Wayback Machine is the best first stop. Otherwise, you are free to dig into the stacks to see what you may find.
+<p>
+<b>The Archive Team Panic Downloads</b> are full pulldowns of currently extant websites, meant to serve as emergency backups for needed sites that are in danger of closing, or which will be missed dearly if suddenly lost due to hard drive crashes or server failures. 
+<p>
+	</div>
+	      </div>
+      <div style="display:inline-block;vertical-align:top;width:49%;">
+			<span class="c-logo" style="background-image:url(https://archive.org/services/img/archiveteam_github)"></span>
+		<div>Collection: <a style="color:#33f;" href="https://archive.org/details/archiveteam_github" target="_new"><span class="wm-title">Archive Team: The Github Hitrub</span></a></div>
+		<div style="max-height:75px;overflow:hidden;position:relative;">
+	  <div style="position:absolute;top:0;left:0;width:100%;height:75px;background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 90%,rgba(255,255,255,255) 100%);"></div>
+	  This collection is a set of Github repository archives from two major sets: A panic grab upon the acquisition by Microsoft, and a larger, ongoing set of Pretty Much Everything.
+	</div>
+	      </div>
+    </div>
+    </div>
+    <div id="wm-capinfo-timestamps">
+    <div style="background-color:#666;color:#fff;font-weight:bold;text-align:center" title="Timestamps for the elements of this page">TIMESTAMPS</div>
+    <div>
+      <div id="wm-capresources" style="margin:0 5px 5px 5px;max-height:250px;overflow-y:scroll !important"></div>
+      <div id="wm-capresources-loading" style="text-align:left;margin:0 20px 5px 5px;display:none"><img src="/_static/images/loading.gif" alt="loading" /></div>
+    </div>
+    </div>
+  </div></div></div></div><div id="wm-ipp-print"></div>
+<script type="text/javascript">
+__wm.bt(675,27,25,2,"web","https://arwn.github.io/blog/2020/05/dota-bot-write-up/","20201226105258",1996,"/_static/",["/_static/css/banner-styles.css?v=fantwOh2","/_static/css/iconochive.css?v=qtvMKcIJ"], false);
+  __wm.rw(1);
+</script>
+<!-- END WAYBACK TOOLBAR INSERT -->
+<header class="page-header">
+    <div class="myname"> 
+        <h2><a href="https://web.archive.org/web/20201226105258/https://arwn.github.io/">Aren R. Windham</a></h2> 
+    </div>
+    <nav>
+        <ul class="navbar">
+            <li class="">
+                <a href="/web/20201226105258/https://arwn.github.io/blog/">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="/web/20201226105258/https://arwn.github.io/about/">
+                    <span>About</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div id="content">
+    <main>
+        <article>
+            
+            <h1 class="page-title blog">Dota Bot Write Up</h1>
+            
+                <p class="blog-post-info">Posted: <time>2020-05-13</time>
+                
+
+
+    <span class="blog-taxonomy-info"> &nbsp; | &nbsp; Tags: 
+        
+        
+        
+        <a class="blog-taxonomy-info" href="/web/20201226105258/https://arwn.github.io/tags/ai">AI</a>, <a class="blog-taxonomy-info" href="/web/20201226105258/https://arwn.github.io/tags/dota">DotA</a>
+    </span>
+
+</p>
+
+                <div class="blog-post-content">
+                <h1 id="introduction">Introduction</h1>
+<p>The problem is this: We have a Dota2 bot that is becoming increasingly hard to
+program. Our bot is built with a heuristics based <a href="https://web.archive.org/web/20201226105258/https://en.wikipedia.org/wiki/Finite-state_machine">state machine</a>. Each state has a hard
+coded weight that will give precedence to an action that can be taken that
+moment. Dota is an incredibly complex game and it is nearly impossible to tell
+if a change to a weight is beneficial or if the bot just got lucky one game. We
+need a way to run hundreds of games and get hard data on if the change was
+beneficial.</p>
+<h1 id="distributed-dota-as-a-service">Distributed Dota as a service</h1>
+<p>We need to run a Dota executable multiple times with different bot files to
+determine which set of weights were the most effective in practice. Docker is
+the obvious choice. Docker lets us automatically load the game, the bot files,
+and return the output. Setting up a docker container that grabs the Dota and
+bot files from the local disk is simple. After some googling and testing we
+have a way to run a game of Dota and pipe the output to a file.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Docker" data-lang="Docker"><span style="font-weight:bold;text-decoration:underline">FROM</span><span style="color:#666;font-style:italic"> fedora:latest</span><span style="">
+</span><span style=""></span><span style="font-weight:bold;text-decoration:underline">COPY</span> . /scripts<span style="">
+</span><span style=""></span><span style="font-weight:bold;text-decoration:underline">VOLUME</span><span style="color:#666;font-style:italic"> /dota</span><span style="">
+</span><span style=""></span><span style="font-weight:bold;text-decoration:underline">CMD</span> sh /scripts/run_game.sh<span style="">
+</span></code></pre></div><h2 id="parsing-game-logs">Parsing Game Logs</h2>
+<p>Of course Dota couldn&rsquo;t provide nice json files as logs so let&rsquo;s get to
+parsing. Dota game logs vary in length but are consistent with spacing and
+formatting. For example, if a tower dies the log will always read: ~Building:
+npc_Dota_3_tower destroyed~. Man if only there were a way to use regular
+expressions to match lines and grab fields from those lines.</p>
+<h2 id="awk">AWK</h2>
+<p>Awk is a specific purpose programming language (like wolfram alpha or bison)
+as opposed to a general purpose programming language (like Lisp or Prolog).
+This means that awk does one thing, and one thing well; text stream processing.
+Using GNU Awk we can easily write statement that will write the time a tower
+dies.  Using this as the basis, it is a non issue to implement every other
+action that can happen throughout the game.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Awk" data-lang="Awk"><span style="font-weight:bold;text-decoration:underline">if</span>($0 ~ <span style="color:#666;font-style:italic">/Building: npc_Dota_.*_(tower|rax)/</span>){
+    <span style="font-weight:bold;text-decoration:underline">printf</span> <span style="color:#666;font-style:italic">&#34;tower %s died at %d&#34;</span>, $2, <span style="font-weight:bold;text-decoration:underline">systime</span>()
+}
+</code></pre></div><h2 id="distributed-dota">Distributed Dota</h2>
+<p>We can run multiple games and pipe the nicely formatted output to files. Now we
+would like to run hundreds of games and use the data from them to create pretty
+graphs representing how well our bot does. Each docker container runs one game
+of Dota, uses two cores, and about 1.3 gigs of ram. Since our computers have 8
+threads and 8 gigs of ram we can optimally run 4 games at a time. What we would
+like to do is tell the server to run 100 games and have each computer run up to
+4 games in parallel until that 100 game quota is met.</p>
+<h2 id="coroutines-are-cool">Coroutines Are Cool</h2>
+<p>We will build our own custom solution in a programming language made for
+distributed computing. Our general layout will work like this.</p>
+<h3 id="server">Server</h3>
+<p>The server is informed that 100 games are to be played. The server
+then starts each worker and opens a http server to listen for
+requests from each worker. It listens for a START request and
+replies yes or no depending on if there are still games to be run
+or not. If it receives a json file instead of a start request it
+will log it and increment the number of games ran.  The server is
+just smart enough to worry about how many games it is running and
+how many games it needs to run, nothing else. Load balancing is
+handled by the worker.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Go" data-lang="Go"><span style="color:#888;font-style:italic">// start http server
+</span><span style="color:#888;font-style:italic"></span>finished.<span style="color:#666;font-weight:bold;font-style:italic">Add</span>(1)
+<span style="font-weight:bold;text-decoration:underline">go</span> <span style="color:#666;font-weight:bold;font-style:italic">httpListener</span>()
+
+<span style="color:#888;font-style:italic">// spin up workers
+</span><span style="color:#888;font-style:italic"></span><span style="font-weight:bold;text-decoration:underline">for</span> i, worker := <span style="font-weight:bold;text-decoration:underline">range</span>(workers) {
+    fmt.<span style="color:#666;font-weight:bold;font-style:italic">Printf</span>(<span style="color:#666;font-style:italic">&#34;Starting worker %s\n&#34;</span>, worker)
+    err := <span style="color:#666;font-weight:bold;font-style:italic">startWorker</span>(worker)
+    <span style="font-weight:bold;text-decoration:underline">if</span> err != <span style="font-weight:bold;text-decoration:underline">nil</span> {
+        log.<span style="color:#666;font-weight:bold;font-style:italic">Print</span>(err)
+    }
+}
+
+<span style="color:#888;font-style:italic">// wait for every worker to complete their games
+</span><span style="color:#888;font-style:italic"></span>finished.<span style="color:#666;font-weight:bold;font-style:italic">Wait</span>()
+</code></pre></div><p><code>finished</code> is a wait group meaning that finished.Wait() will block until every
+worker has sent back it&rsquo;s json data. We have a wait group so that our server
+will not end before the workers have all sent back their game data.</p>
+<h3 id="worker">Worker</h3>
+<p>The worker is in charge of load balancing it&rsquo;s computer and running games.
+When the server is woke it sends ~MAX_GAMES~ requests to the server, asking to
+start games. In Go this is easy:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Go" data-lang="Go">limit := limiter.<span style="color:#666;font-weight:bold;font-style:italic">NewConcurrencyLimiter</span>(MAX_GAMES)
+done := <span style="font-weight:bold;text-decoration:underline">false</span>
+<span style="font-weight:bold;text-decoration:underline">for</span> !done {
+	done = limit.<span style="color:#666;font-weight:bold;font-style:italic">Execute</span>(RunGame)
+	time.<span style="color:#666;font-weight:bold;font-style:italic">Sleep</span>(time.Second * 3) <span style="color:#888;font-style:italic">// because other computers are slow
+</span><span style="color:#888;font-style:italic"></span>}
+limit.<span style="color:#666;font-weight:bold;font-style:italic">Wait</span>()
+</code></pre></div><p><code>RunGame</code> sends a http request to the server and runs a game based on the
+response. Since running a docker container/Dota game, blocks until it has
+finished running we need to spawn a new process every time we start a game.
+Again, in Go this is easy.</p>
+<p>Now that we have our server and workers communicating nicely we can run lots of
+games and generate huge amounts of data.</p>
+<h1 id="machine-learning">Machine Learning</h1>
+<p>As fun as tweaking random bot variables is, it&rsquo;s not very efficient.. for
+humans. Luckily computers can do boring tasks very fast. Since we have a lack
+of time and processing power we will use an algorithm that takes less of both.</p>
+<h2 id="genetic-algorithms">Genetic Algorithms</h2>
+<p>Genetic algorithms are a type of machine learning based on random mutations and
+survival of the fittest. Instead of running the server once and getting a
+result back, we want that result to be fed back into next round&rsquo;s bots. The new
+server will work as follows:</p>
+<p><img src="genetic-uml.png" alt="/static/img/genetic-uml.png"></p>
+<p>For my sake, I&rsquo;m not explaining the nitty gritty of how genes are selected but
+if you want to learn more about genetic algorithms Wikipedia has a good article
+<a href="https://web.archive.org/web/20201226105258/https://en.wikipedia.org/wiki/Genetic_algorithm">here</a>. Genetic algorithms are
+just a small taste of machine learning and are still incredibly complicated.</p>
+<p>Implementing a genetic algorithm is only as hard as running the server over and
+over and processing data. In order to process each games data we need to write
+a function that will go over the logs and generate a fitness score for each
+hero. A fitness score is a cumulative score of how well the bot did with the
+new mutated genes. An example fitness function would look something like this:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="font-weight:bold;font-style:italic;text-decoration:underline">func</span> <span style="color:#666;font-weight:bold;font-style:italic">CalculateFitness</span>(hero *heroEvaluation) <span style="font-weight:bold;text-decoration:underline">float64</span> {
+	fitness := 0.0
+
+	fitness += hero.winrate * WIN_MOD
+	fitness += hero.killsPerMinute * KPM_MOD
+	fitness += hero.assistsPerMinute * APM_MOD
+	fitness += hero.goldPerMinute * GPM_MOD
+	fitness += hero.deathsPerMinute * DPM_MOD
+	fitness += hero.experiencePerMinute * XPM_MOD
+
+	<span style="font-weight:bold;text-decoration:underline">return</span> fitness
+}
+</code></pre></div><p>Each score would then be added together and given a percentage to be
+incorporated into the gene pool.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">chance := (heroFitness = totalFitness)
+</code></pre></div><p>And voila, you taught a computer to reproduce. Go have some cake, you
+deserve it bud.</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>Writing a Dota bot is not fun. Designing and implementing a distributed,
+machine learning powered Dota swarm is. The complexity and variance in each
+little problem means that we were able to help each other solve things we may
+not have learned in a one dimensional project. From docker, to machine
+learning, to shell scripting and network administration. I learned a lot about
+programming and, more importantly, project design and problem solving.</p>
+
+                </div>
+                
+            
+        </article>
+    </main>
+
+        </div>
+    </body>
+</html>
+<!--
+     FILE ARCHIVED ON 10:52:58 Dec 26, 2020 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 21:30:24 Jan 14, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 177.091
+  exclusion.robots: 0.347
+  exclusion.robots.policy: 0.331
+  RedisCDXSource: 0.909
+  esindex: 0.013
+  LoadShardBlock: 137.631 (3)
+  PetaboxLoader3.datanode: 120.804 (5)
+  CDXLines.iter: 31.538 (3)
+  PetaboxLoader3.resolve: 137.231 (2)
+  load_resource: 155.407
+  loaddict: 32.283
+-->
