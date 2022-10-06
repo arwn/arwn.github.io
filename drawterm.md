@@ -158,7 +158,7 @@ Next we need to enable authentication and listen for connections.
     % aux/listen1 -t tcp!*!17019 /rc/bin/service/tcp17019
     
 
-The aux/listen line shold hang, this means we are ready to drawterm in.
+The aux/listen line should hang, this means we are ready to drawterm in.
 
 Drawterm
 ========
