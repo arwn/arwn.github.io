@@ -5,9 +5,10 @@
   <title>Now in Color!</title>
   <META charset="utf-8">
   <META name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mystyle.css">
 </head>
 
-<body style="width:96%; max-width:720px">
+<body>
   <h1 id="setting-up-drawterm">Setting Up Drawterm</h1>
   <p>This document outlines how to set up 9front to be used with drawterm. Readers are not expected to have any Plan 9
     experience. Basic Unix knowledge is helpful but not a requirement. At the end of this tutorial you will have the
@@ -17,7 +18,8 @@
     <li>the ability to remotely connect to the VM using drawterm</li>
   </ul>
   <p>This tutorial has been tested on Windows 10 and VirtualBox. Other operating systems and hypervisors may work. See
-    <a href="http://fqa.9front.org/">http://fqa.9front.org/</a> for more information.</p>
+    <a href="http://fqa.9front.org/">http://fqa.9front.org/</a> for more information.
+  </p>
   <p><em>note: VirtualBox is not officially supported, but it works for now ;)</em></p>
   <h1 id="requirements">Requirements</h1>
   <ul>
@@ -33,7 +35,7 @@
     <li>drawterm.exe [<a href="http://drawterm.9front.org/">download</a>]</li>
   </ul>
   <h1 id="creating-the-vm">Creating the VM</h1>
-  <ol type="1">
+  <ul type="1">
     <li>open VirtualBox</li>
     <li>click Machine&gt;New…</li>
     <li>at the bottom, click Expert Mode
@@ -83,7 +85,8 @@
       </ul>
     </li>
     <li>click Create</li>
-  </ol>
+  </ul>
+
   <p>You should now have a new VM named ‘Plan 9’.</p>
   <h2 id="adding-a-network-device">Adding a network device</h2>
   <p>In order to connect to the VM you need a Bridged network adapter. Click the newly created Plan 9 VM and navigate to
@@ -198,8 +201,10 @@
   <h1 id="networking">Networking</h1>
   <p>You should automagically have an internet connection on /net/ether0. Let’s set up our second network interface.</p>
   <p>First we mount our network card:</p>
-  <pre><code>% bind -b &#39;#l1&#39; /net
+  <table>
+    <pre><code>% bind -b &#39;#l1&#39; /net
 % ip/ipconfig ether /net/ether1</code></pre>
+  </table>
   <p>This should get us an IP address. Type <code>cat /net/ipselftab</code> and look for an address that looks like
     192.168.56.xxx. This is the ip we will use to connect with in the next step.</p>
   <p><em>note: The IP address might be different on linux/macos.</em></p>
