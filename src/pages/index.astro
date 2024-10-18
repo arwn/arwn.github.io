@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import BlogPostList from "../components/BlogPostList.astro"
+
+
+import { Image } from 'astro:assets'
+import mountains from '../images/mountains.png'
+---
+
+<BaseLayout>
+    <Image src={mountains} alt="" />
+    Welcome to my website.
+
+    <BlogPostList />
+</BaseLayout>

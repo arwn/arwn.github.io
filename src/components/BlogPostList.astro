@@ -1,0 +1,27 @@
+---
+
+const blogposts = Object.groupBy((await Astro.glob('../pages/posts/*.md')),
+  (file, _) => file.frontmatter.publishDate.slice(0,4))
+
+---
+<style>
+h2 {
+    border-bottom: 1px dashed #aaa;
+    font-size: 1.7rem;
+    margin-top: 2em;
+}
+</style>
+
+<p>
+    {Object.keys(blogposts).sort((a,b) => Number(b) - Number(a))
+      .map(k => {
+      return <h2 class="page">{k}</h2>
+        <ul>
+            { blogposts[k]?.map((post) => {
+              return <li><a href={post.url}>{post.url?.split('/').reverse()[0]}</a></li>
+              })
+            }
+        </ul>
+      })
+    }
+</p>
