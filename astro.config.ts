@@ -18,5 +18,6 @@ export default defineConfig({
   integrations: [vue()],
   markdown: {
     remarkPlugins: [setDefaultLayout],
+    syntaxHighlight: "prism",
   },
 });
