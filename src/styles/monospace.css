@@ -1,58 +1,9 @@
-@font-face {
-  font-family: "Monaspace Neon";
-  src: url("/MonaspaceNeon-Light.woff2") format("woff2"),
-    url("/MonaspaceNeon-Light.woff") format("woff");
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Monaspace Neon";
-  src: url("/MonaspaceNeon-Regular.woff2") format("woff2"),
-    url("/MonaspaceNeon-Regular.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Monaspace Neon";
-  src: url("/MonaspaceNeon-Medium.woff2") format("woff2"),
-    url("/MonaspaceNeon-Medium.woff") format("woff");
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Monaspace Neon";
-  src: url("/MonaspaceNeon-SemiBold.woff2") format("woff2"),
-    url("/MonaspaceNeon-SemiBold.woff") format("woff");
-  font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Monaspace Neon";
-  src: url("/MonaspaceNeon-Bold.woff2") format("woff2"),
-    url("/MonaspaceNeon-Bold.woff") format("woff");
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Monaspace Neon VF";
-  src: url("/MonaspaceNeon-VF.woff2") format("woff2-variations"),
-    url("/MonaspaceNeon-VF.woff") format("woff-variations");
-  /* font-weight requires a range: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/Variable_Fonts_Guide#Using_a_variable_font_font-face_changes */
-  font-weight: 300 700;
-  font-style: normal;
-}
 :root {
-  --font-family: "Monaspace Neon", monospace;
+  --font-family: "JetBrains Mono", monospace;
   --line-height: 1.2rem;
   --border-thickness: 2px;
   --text-color: #000;
   --text-color-alt: #666;
-  --url-color: #7393b3;
   --background-color: #fff;
   --background-color-alt: #eee;
 
@@ -85,11 +36,6 @@
   margin-top: var(--line-height);
 }
 
-html,
-body {
-  height: 100%;
-}
-
 html {
   display: flex;
   width: 100%;
@@ -115,7 +61,6 @@ body {
   :root {
     font-size: 14px;
   }
-
   body {
     padding: var(--line-height) 1ch;
   }
@@ -138,7 +83,6 @@ h1 {
   margin-bottom: calc(var(--line-height) * 2);
   text-transform: uppercase;
 }
-
 h2 {
   font-size: 1rem;
   text-transform: uppercase;
@@ -152,7 +96,6 @@ hr {
   border: none;
   color: var(--text-color);
 }
-
 hr:after {
   display: block;
   content: "";
@@ -170,7 +113,7 @@ a {
 
 a:link,
 a:visited {
-  color: var(--url-color);
+  color: var(--text-color);
 }
 
 p {
@@ -180,7 +123,6 @@ p {
 strong {
   font-weight: var(--font-weight-bold);
 }
-
 em {
   font-style: italic;
 }
@@ -213,7 +155,6 @@ td {
   vertical-align: top;
   text-align: left;
 }
-
 table tbody tr:first-child > * {
   padding-top: calc((var(--line-height) / 2) - var(--border-thickness));
 }
@@ -221,11 +162,9 @@ table tbody tr:first-child > * {
 th {
   font-weight: 700;
 }
-
 .width-min {
   width: 0%;
 }
-
 .width-auto {
   width: 100%;
 }
@@ -233,11 +172,9 @@ th {
 .header {
   margin-bottom: calc(var(--line-height) * 2);
 }
-
 .header h1 {
   margin: 0;
 }
-
 .header tr td:last-child {
   text-align: right;
 }
@@ -255,7 +192,6 @@ video {
   object-fit: contain;
   overflow: hidden;
 }
-
 img {
   font-style: italic;
   color: var(--text-color-alt);
@@ -271,7 +207,6 @@ summary {
   font-weight: var(--font-weight-medium);
   cursor: pointer;
 }
-
 details[open] summary {
   margin-bottom: var(--line-height);
 }
@@ -281,7 +216,6 @@ details ::marker {
   content: "▶";
   margin: 0;
 }
-
 details[open] ::marker {
   content: "▼";
 }
@@ -296,7 +230,6 @@ pre {
   margin: var(--line-height) 0;
   overflow-y: hidden;
 }
-
 figure pre {
   margin: 0;
 }
@@ -332,13 +265,11 @@ ul {
   list-style-type: square;
   padding: 0 0 0 2ch;
 }
-
 ol {
   list-style-type: none;
   counter-reset: item;
   padding: 0;
 }
-
 ol ul,
 ol ol,
 ul ol,
@@ -346,7 +277,6 @@ ul ul {
   padding: 0 0 0 3ch;
   margin: 0;
 }
-
 ol li:before {
   content: counters(item, ".") ". ";
   counter-increment: item;
@@ -394,7 +324,6 @@ input[type="checkbox"] {
   height: var(--line-height);
   cursor: pointer;
 }
-
 input[type="checkbox"]:checked:before {
   content: "";
   width: 1ch;
@@ -411,16 +340,13 @@ input:focus {
 input {
   width: calc(round(down, 100%, 1ch));
 }
-
 ::placeholder {
   color: var(--text-color-alt);
   opacity: 1;
 }
-
 ::-ms-input-placeholder {
   color: var(--text-color-alt);
 }
-
 button::-moz-focus-inner {
   padding: 0;
   border: 0;
@@ -435,7 +361,6 @@ button {
 button:hover {
   background: var(--background-color-alt);
 }
-
 button:active {
   transform: translate(2px, 2px);
 }
@@ -460,18 +385,15 @@ label input {
   list-style-type: none;
   line-height: var(--line-height);
 }
-
 .tree ul {
   margin: 0;
 }
-
 .tree ul li {
   position: relative;
   padding-left: 1.5ch;
   margin-left: 1.5ch;
   border-left: var(--border-thickness) solid var(--text-color);
 }
-
 .tree ul li:before {
   position: absolute;
   display: block;
@@ -481,11 +403,9 @@ label input {
   width: 1ch;
   border-bottom: var(--border-thickness) solid var(--text-color);
 }
-
 .tree ul li:last-child {
   border-left: none;
 }
-
 .tree ul li:last-child:after {
   position: absolute;
   display: block;
@@ -517,39 +437,30 @@ label input {
       )
     );
 }
-
 .grid:has(> :last-child:nth-child(1)) {
   --grid-cells: 1;
 }
-
 .grid:has(> :last-child:nth-child(2)) {
   --grid-cells: 2;
 }
-
 .grid:has(> :last-child:nth-child(3)) {
   --grid-cells: 3;
 }
-
 .grid:has(> :last-child:nth-child(4)) {
   --grid-cells: 4;
 }
-
 .grid:has(> :last-child:nth-child(5)) {
   --grid-cells: 5;
 }
-
 .grid:has(> :last-child:nth-child(6)) {
   --grid-cells: 6;
 }
-
 .grid:has(> :last-child:nth-child(7)) {
   --grid-cells: 7;
 }
-
 .grid:has(> :last-child:nth-child(8)) {
   --grid-cells: 8;
 }
-
 .grid:has(> :last-child:nth-child(9)) {
   --grid-cells: 9;
 }

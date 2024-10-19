@@ -6,8 +6,6 @@ const datestr = new Date().toLocaleDateString("en-US", {
 });
 </script>
 
-<style scoped></style>
-
 <template>
   <footer>
     <p>

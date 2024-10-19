@@ -1,0 +1,17 @@
+@use "font-xenon";
+
+pre,
+code {
+  font-family: font-xenon.$font-stack;
+  font-weight: 400;
+}
+
+pre {
+  code {
+    border: none;
+  }
+}
+
+code {
+  border-bottom: 0.05rem solid grey;
+}

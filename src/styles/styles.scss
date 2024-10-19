@@ -1,0 +1,21 @@
+@use "node_modules/normalize.css/normalize.css";
+@use "monospace.css";
+
+@use "code-blocks";
+
+html,
+body {
+  height: 100%;
+}
+
+a:link,
+a:visited {
+  color: #7393b3;
+}
+
+@media (prefers-color-scheme: dark) {
+  a:link,
+  a:visited {
+    color: #e65757;
+  }
+}
