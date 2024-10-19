@@ -11,8 +11,8 @@ const datestr = new Date().toLocaleDateString("en-US", {
 <template>
   <footer>
     <p>
-      © {{ datestr }} <i>Aren Windham</i> [<a href="about">about</a>] [<a
-        href="contact"
+      © {{ datestr }} <i>Aren Windham</i> [<a href="/about">about</a>] [<a
+        href="/contact"
         >contact</a
       >]
     </p>
