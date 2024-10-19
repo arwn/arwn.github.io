@@ -1,5 +1,6 @@
 ---
 import Navigation from "../components/Navigation.vue";
+import Footer from "../components/Footer.vue";
 import '../styles/monospace.css'
 const { pageTitle } = Astro.props;
 ---
@@ -14,6 +15,9 @@ const { pageTitle } = Astro.props;
 </head>
 <body>
     <Navigation />
+    <main>
     <slot />
+    </main>
+    <Footer />
 </body>
 </html>
