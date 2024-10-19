@@ -13,6 +13,17 @@ const { pageTitle } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
 </head>
+<style>
+/* this crap gets the footer to work (I LOVE CSS 🥰)*/
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+</style>
 <body>
     <Navigation />
     <main>
