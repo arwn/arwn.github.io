@@ -4,6 +4,7 @@ publishDate: '2024-09-18'
 
 # Some Tools I Like
 
+- [jujutsu](https://github.com/martinvonz/jj) - vcs but good
 - [astro](https://astro.build/) - (this site was built in astro)
 - [quickserv](https://github.com/jstrieb/quickserv) - dependency-free, statically-linked, single-file web server
 
